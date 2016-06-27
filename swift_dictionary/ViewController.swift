@@ -7,19 +7,108 @@
 //
 
 import UIKit
+let apikey = "250d852f1aff733e80a8e2f5b7ad8c36"
+let searchApi = "http://v.juhe.cn/xhzd/query"
+
 
 class ViewController: UIViewController {
-
+    lazy var textField : UITextField  = {
+        let aField = UITextField(frame: CGRect(x: 0, y: 400, width: 375, height: 100))
+        aField.backgroundColor = UIColor.grayColor()
+        aField.delegate = self
+        return aField
+        
+    }()
+    
+    lazy var label : UILabel = {
+        let aLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 375, height: 300))
+        aLabel.textAlignment = NSTextAlignment.Left
+        aLabel.backgroundColor = UIColor.redColor()
+        return aLabel
+        
+    }()
+    
+    lazy var indicatorVie : UIActivityIndicatorView = {
+        let aIndicatorVie = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        aIndicatorVie.bounds = CGRect(x: 0, y: 0, width: 30, height: 30)
+        aIndicatorVie.center = CGPoint(x: CGRectGetMidX(self.view.bounds), y: 100)
+        aIndicatorVie.hidesWhenStopped = true
+        
+        
+        return aIndicatorVie
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.view .addSubview(self.textField)
+        self.view.addSubview(self.label)
+        self.view.addSubview(self.indicatorVie)
+    }
+    
+    
+        
+        }
+
+
+
+    func renderWord(word:protocol<WordType>) {
+        label.text = "\(word.name) \n\(word.prounciation) \n\(word.difination) \n"
+        dispatch_async(dispatch_get_main_queue()) {
+            self.indicatorVie.stopAnimating()
+            let youdao = youDaoWord(name: wordName, prounciation: wordDifination, difination: wordDifination)
+            
+        }
+        
+        
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+
+    func dictionaryService(word : String){
+        
+        let searchUrl = "\(searchApi)?key=\(apikey)&word=\(word)"
+        let uif8url = searchUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! as String
+        let session = NSURLSession.sharedSession()
+        session.dataTaskWithURL(NSURL(string: uif8url)!){(data,response,error) in
+            
+            
+            print(error)
+            let json = JSON(data:data!)
+            print(json)
+            
+            let wordName = json["result"]["zi"].string
+            let wordPrunciation = json["result"]["pingyin"].string
+            var wordDifination = json["result"]["jijie"].array
+            
+            
+            var wordDifinationCon = ""
+            for wordString in wordDifination! {
+                
+                wordDifination += "\(wordString)\n"
+                
+            
+            }
+            
+            
+            }.resume()
+        
+        
+        
+            
+        
     }
-
-
+    
+    
 }
 
+extension ViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool{
+        
+        self.indicatorVie.startAnimating()
+        self.dictionaryService(textField.text!)
+        
+        
+        return true
+    }
+    
+}

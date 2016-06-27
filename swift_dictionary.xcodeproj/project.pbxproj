@@ -14,6 +14,8 @@
 		03D48C701D20B37200C88EF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D48C6E1D20B37200C88EF6 /* LaunchScreen.storyboard */; };
 		03D48C7B1D20B37200C88EF6 /* swift_dictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D48C7A1D20B37200C88EF6 /* swift_dictionaryTests.swift */; };
 		03D48C861D20B37200C88EF6 /* swift_dictionaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D48C851D20B37200C88EF6 /* swift_dictionaryUITests.swift */; };
+		03D48C941D20C05700C88EF6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D48C931D20C05700C88EF6 /* SwiftyJSON.swift */; };
+		03D48C961D20C44900C88EF6 /* WordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D48C951D20C44900C88EF6 /* WordType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		03D48C811D20B37200C88EF6 /* swift_dictionaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swift_dictionaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D48C851D20B37200C88EF6 /* swift_dictionaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_dictionaryUITests.swift; sourceTree = "<group>"; };
 		03D48C871D20B37200C88EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03D48C931D20C05700C88EF6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		03D48C951D20C44900C88EF6 /* WordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				03D48C651D20B37200C88EF6 /* AppDelegate.swift */,
+				03D48C931D20C05700C88EF6 /* SwiftyJSON.swift */,
 				03D48C671D20B37200C88EF6 /* ViewController.swift */,
+				03D48C951D20C44900C88EF6 /* WordType.swift */,
 				03D48C691D20B37200C88EF6 /* Main.storyboard */,
 				03D48C6C1D20B37200C88EF6 /* Assets.xcassets */,
 				03D48C6E1D20B37200C88EF6 /* LaunchScreen.storyboard */,
@@ -259,6 +265,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D48C941D20C05700C88EF6 /* SwiftyJSON.swift in Sources */,
+				03D48C961D20C44900C88EF6 /* WordType.swift in Sources */,
 				03D48C681D20B37200C88EF6 /* ViewController.swift in Sources */,
 				03D48C661D20B37200C88EF6 /* AppDelegate.swift in Sources */,
 			);
